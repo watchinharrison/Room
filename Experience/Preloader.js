@@ -87,6 +87,16 @@ export default class Preloader extends EventEmitter {
                     },
                     "same"
                 );
+                if ( typeof( DeviceOrientationEvent ) !== "undefined" && typeof( DeviceOrientationEvent.requestPermission ) === "function" ) {
+                    this.timeline.to(
+                        ".motion-bar",
+                        {
+                            opacity: 1,
+                            onComplete: resolve,
+                        },
+                        "same"
+                    );
+                }
         });
     }
 

@@ -175,6 +175,38 @@ svg{
   }
 }
 
+/* Motion Bar */
+.motion-bar {
+  position: fixed;
+  display: flex;
+  opacity: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 48px;
+  left: 48px;
+  z-index: 99999999999999;
+}
+
+.motion-button {
+  cursor: pointer;
+  position: relative;
+  width: 56px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-green);
+  border-radius: 999px;
+  margin: 0px 16px;
+  border: none;
+}
+
+.motion-circle {
+  color: var(--color-text);
+  font-size: 0.6rem;
+}
+
 /* Toggle Bar --------------------------------------------- */
 .toggle-bar{
   position: fixed;

@@ -19,10 +19,14 @@ export default class Room {
             ease: 0.1,
         };
 
+        this.motionButton = document.querySelector(".motion-button");
+
         this.setModel();
         this.setAnimation();
         this.onMouseMove();
-        this.onOrientationChange();
+        this.motionButton.addEventListener("click", () => {
+            this.onOrientationChange();
+        });
     }
 
     setModel() {
@@ -119,15 +123,22 @@ export default class Room {
     }
 
     onOrientationChange() {
-        window.addEventListener("deviceorientation", (event) => {
-            // const absolute = event.absolute;
-            // const alpha = event.alpha;
-            // const beta = event.beta;
-            const gamma = event.gamma;
-            this.rotation =
-                ((gamma - 15 / 2) * 2) / 15;
-            this.lerp.target = this.rotation * 0.05;
-        }, true);
+        if ( typeof( DeviceOrientationEvent ) !== "undefined" && typeof( DeviceOrientationEvent.requestPermission ) === "function" ) {
+            DeviceOrientationEvent.requestPermission().then( response => {
+                // (optional) Do something after API prompt dismissed.
+                if ( response == "granted" ) {
+                    window.addEventListener("deviceorientation", (event) => {
+                        // const absolute = event.absolute;
+                        // const alpha = event.alpha;
+                        // const beta = event.beta;
+                        const gamma = event.gamma;
+                        this.rotation =
+                            ((gamma - 15 / 2) * 2) / 15;
+                        this.lerp.target = this.rotation * 0.05;
+                    }, true);
+                }
+            });
+        }
     }
 
     resize() {}
