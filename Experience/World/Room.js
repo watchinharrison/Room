@@ -22,6 +22,7 @@ export default class Room {
         this.setModel();
         this.setAnimation();
         this.onMouseMove();
+        this.onOrientationChange();
     }
 
     setModel() {
@@ -115,6 +116,18 @@ export default class Room {
                 ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
             this.lerp.target = this.rotation * 0.05;
         });
+    }
+
+    onOrientationChange() {
+        window.addEventListener("deviceorientation", (event) => {
+            // const absolute = event.absolute;
+            // const alpha = event.alpha;
+            // const beta = event.beta;
+            const gamma = event.gamma;
+            this.rotation =
+                ((gamma - 15 / 2) * 2) / 15;
+            this.lerp.target = this.rotation * 0.05;
+        }, true);
     }
 
     resize() {}
