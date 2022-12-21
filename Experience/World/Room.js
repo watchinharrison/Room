@@ -36,22 +36,20 @@ export default class Room {
                 });
             }
 
-            // console.log(child);
-
-            if (child.name === "Aquarium") {
-                // console.log(child);
-                child.children[0].material = new THREE.MeshPhysicalMaterial();
-                child.children[0].material.roughness = 0;
-                child.children[0].material.color.set(0x549dd2);
-                child.children[0].material.ior = 3;
-                child.children[0].material.transmission = 1;
-                child.children[0].material.opacity = 1;
+            if (child.name === "Tank_Water" || child.name === "Window") {
+                child.material = new THREE.MeshPhysicalMaterial();
+                child.material.roughness = 0;
+                child.material.color.set(0x549dd2);
+                child.material.ior = 3;
+                child.material.transmission = 1;
+                child.material.opacity = 1;
             }
 
-            if (child.name === "Computer") {
-                child.children[1].material = new THREE.MeshBasicMaterial({
+            if (child.name === "Display") {
+                child.material = new THREE.MeshBasicMaterial({
                     map: this.resources.items.screen,
                 });
+                // child.rotation.z = Math.PI / 2;
             }
 
             if (child.name === "Mini_Floor") {
@@ -72,13 +70,12 @@ export default class Room {
             //     child.scale.set(0, 0, 0);
             // }
 
-            child.scale.set(0, 0, 0);
+            // child.scale.set(0, 0, 0);
             if (child.name === "Cube") {
                 // child.scale.set(1, 1, 1);
-                child.position.set(0, -1, 0);
-                child.rotation.y = Math.PI / 4;
+                // child.position.set(0, 7, 0);
+                // child.rotation.y = Math.PI / 2;
             }
-
             this.roomChildren[child.name.toLowerCase()] = child;
         });
 
