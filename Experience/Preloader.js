@@ -105,16 +105,16 @@ export default class Preloader extends EventEmitter {
             this.secondTimeline = new GSAP.timeline();
 
             this.secondTimeline
-                // .to(
-                //     this.room.position,
-                //     {
-                //         x: 0,
-                //         y: 0,
-                //         z: 0,
-                //         ease: "power1.out",
-                //     },
-                //     "same"
-                // )
+                .to(
+                    this.room.position,
+                    {
+                        x: 0,
+                        y: 0,
+                        z: 0,
+                        ease: "power1.out",
+                    },
+                    "same"
+                )
                 // .to(
                 //     this.roomChildren.cube.rotation,
                 //     {
@@ -131,13 +131,13 @@ export default class Preloader extends EventEmitter {
                 //     },
                 //     "same"
                 // )
-                // .to(
-                //     this.camera.orthographicCamera.position,
-                //     {
-                //         y: 6.5,
-                //     },
-                //     "same"
-                // )
+                .to(
+                    this.camera.orthographicCamera.position,
+                    {
+                        y: 6.5,
+                    },
+                    "same"
+                )
                 // .to(
                 //     this.roomChildren.cube.position,
                 //     {
@@ -147,11 +147,11 @@ export default class Preloader extends EventEmitter {
                 //     },
                 //     "same"
                 // )
-                // .set(this.roomChildren.body.scale, {
-                //     x: 1,
-                //     y: 1,
-                //     z: 1,
-                // })
+                .set(this.roomChildren.body.scale, {
+                    x: 1,
+                    y: 1,
+                    z: 1,
+                })
                 // .to(
                 //     this.roomChildren.cube.scale,
                 //     {
